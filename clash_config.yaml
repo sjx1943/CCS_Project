@@ -51,12 +51,6 @@ cfw-bypass:
 cfw-latency-timeout: 5000
 
 proxies:
-  - name: ss2
-    type: ss
-    server: 130.211.242.228
-    port: "6666"
-    cipher: chacha20-ietf
-    password: zpepc001@
   - name: ss1
     type: ss
     server: 34.80.31.152
@@ -78,12 +72,11 @@ proxies:
 proxy-groups:
   - name: PROXY
     proxies:
-      - ss2
       - ss1
       - Trojan1
     type: url-test
     url: http://www.gstatic.com/generate_204
-    interval: 300
+    interval: 2500
     # 白名单模式 PROXY，黑名单模式 DIRECT
   - name: Final
     type: select
@@ -102,14 +95,13 @@ proxy-groups:
     proxies:
       - PROXY
       - ss1
-      - ss2
       - Trojan1
+      - DIRECT
 # 大陆流媒体面向港澳台限定服务
   - name: HKMTMedia
     type: select
     proxies:
       - DIRECT
-      - ss2
       - ss1
       - Trojan1
 # 运营商及声名狼藉网站劫持
