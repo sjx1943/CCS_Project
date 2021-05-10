@@ -46,7 +46,7 @@ cfw-bypass:
     - <local>
 cfw-latency-timeout: 5000
 
-Proxy:
+proxies:
 ###############################################################配置分割线
 # Shadowsocks 支持的加密方式:
 #   aes-128-gcm aes-192-gcm aes-256-gcm
@@ -64,57 +64,76 @@ Proxy:
   password: sjx18094552                   # SS 密码
   # udp: true                               # 默认不开启
   
-
+# Trojan 的配置
+- name: tj1
+  type: trojan
+  server: sggks.com                        # Trojan 服务器
+  port: 443                                  # 侦听的端口
+  password: 19910403Sjx@                    # Trojan 密码 
+  udp: true
+  # sni: example.com # aka server name
+  # alpn:
+  #   - h2
+  #   - http/1.1
+  skip-cert-verify: true
 
 ###############################################################配置分割线
 # 代理组策略
-Proxy Group:
+proxy-groups:
 # url-test 通过指定的 URL 测试并选择延迟最低的节点
-- name: "自动节点选择"
+- name: PROXY
   type: url-test
   proxies:
     - ss1
+    - tj1
   url: 'http://www.gstatic.com/generate_204'
   interval: 300
 
 # 代理节点选择
-- name: "PROXY"
+- name: manual
   type: select
   proxies:
     - ss1
+    - tj1
+    - DIRECT
 # 白名单模式 PROXY，黑名单模式 DIRECT
-- name: "Final"
+- name: Final
   type: select
   proxies:
-    - ss1
+    - PROXY
+    - DIRECT
 
 # Apple 服务代理
-- name: "Apple"
+- name: Apple
   type: select
   proxies:
-    - ss1
+    - DIRECT
+    - PROXY
 
 # 国际流媒体服务
-- name: "GlobalMedia"
+- name: GlobalMedia
   type: select
   proxies:
-    - ss1
+    - PROXY
+    - DIRECT
+
 
 # 大陆流媒体面向港澳台限定服务
-- name: "HKMTMedia"
+- name: HKMTMedia
   type: select
   proxies:
-    - ss1
+    - DIRECT
+    - PROXY
 
 # 运营商及声名狼藉网站劫持
-- name: "Hijacking"
+- name: Hijacking
   type: select
   proxies:
-    - "REJECT"
-    - "DIRECT"
+    - REJECT
+    - DIRECT
 
 # 规则
-Rule:
+rules:
 # Unbreak
 # > Google
 - DOMAIN-SUFFIX,googletraveladservices.com,DIRECT
