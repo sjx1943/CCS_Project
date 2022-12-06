@@ -67,11 +67,11 @@ proxies:
 # Trojan ������
 - name: tj1
   type: trojan
-  server: 35.229.248.215                        # Trojan ������
-  port: 31184                                  # �����Ķ˿�
-  password: FCBBGRDe                    # Trojan ���� 
+  server: guajiguaji.club                      # Trojan ������
+  port: 37780                                  # �����Ķ˿�
+  password: BsxsygJA                    # Trojan ���� 
   udp: true
-  sni: sggks.com # aka server name
+  #sni:  # aka server name
   # alpn:
   #   - h2
   #   - http/1.1
