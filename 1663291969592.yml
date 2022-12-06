@@ -67,7 +67,7 @@ proxies:
 # Trojan ������
 - name: tj1
   type: trojan
-  server: 34.80.239.195                        # Trojan ������
+  server: 35.229.248.215                        # Trojan ������
   port: 31184                                  # �����Ķ˿�
   password: FCBBGRDe                    # Trojan ���� 
   udp: true
