@@ -47,9 +47,9 @@ proxies:
   - name: sk5
     type: socks5
     server: guajiguaji.club
-    port: 48449
-    username: sensigsni
-    password: 233blog.com
+    port: 30670
+    username: sggggggg
+    password: Zpepc001@
     tls: false
     skip-cert-verify: false
     udp: true
@@ -59,7 +59,7 @@ proxies:
 #   port: 443
 #   cipher: chacha20-ietf-poly1305
 #   password: "password"
-#   # udp: true
+#   udp: true
 
 # - name: "ss2"
 #   type: ss
